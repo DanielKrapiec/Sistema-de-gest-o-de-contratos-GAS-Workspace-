@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    select option:first-child {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <select name="docType" id="tipoDocumento">
+    <option value="">Tipo do documento</option>
+    <option value="TC">Termo de compromisso</option>
+    <option value="TR">Termo de encerramento</option>
+  </select>
+  <p></p>
+  <input type="text" id="codigo" placeholder="Codigo" autocomplete="off">
+  <button id="meuBotao" onclick="buscar()">Buscar contrato</button>
+  <script>
+    function buscar() {
+      // Desativa o botão 
+        var codigo = document.getElementById('codigo').value; 
+        var tipoDocumento = document.getElementById('tipoDocumento').value;
+        if (codigo == "" || tipoDocumento == "") {
+          alert('Adicione um tipo de documento/codigo valido');
+          return;
+        };
+        var meuBotao = document.getElementById('meuBotao');
+        meuBotao.disabled = true;
+        var codigoCerto = tipoDocumento + codigo;
+        google.script.run.buscarContrato1(codigoCerto, codigo);
+      }
+  </script>
+</body>
+</html>
