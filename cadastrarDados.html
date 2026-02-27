@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    select option:first-child {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="ra" placeholder="RA do aluno" autocomplete="off">
+  <input type="text" id="nome" placeholder="Nome completo" autocomplete="off">
+  <select name="cursos" id="curso">
+    <option value="">Curso do aluno</option>
+    <option value="ARQ">Arquitetura</option>
+    <option value="CONT">Contabilidade</option>
+    <option value="DSN">Design</option>
+    <option value="ENG CIV">Eng. Civil</option>
+    <option value="ENG PRO">Eng. Produção</option>
+    <option value="ENG MEC">Eng. Mecanica</option>
+    <option value="LET">Letras</option>
+    <option value="PSI">Psicologia</option>
+    <option value="DIR">Direito</option>
+  </select>
+  <p>
+    <input type="text" id="concedente" placeholder="Empregador" autocomplete="off">
+  </p>
+  <p>
+    <button id="botaoEnviar" onclick="gravarDados1()">Enviar</button>
+  </p>
+  <script>
+    function gravarDados1() {
+      // Desativa o botão  
+        var botao = document.getElementById('botaoEnviar');  
+        botao.disabled = true; 
+        var concedente = document.getElementById('concedente').value;
+        var ra = document.getElementById('ra').value;
+        var nome = document.getElementById('nome').value;
+        var curso = document.getElementById('curso').value;
+        google.script.run.gravarDados1(ra, nome, curso, concedente);
+      }
+  </script>
+</body>
+</html>
