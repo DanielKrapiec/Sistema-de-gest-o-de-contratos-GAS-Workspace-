@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <input type="file" id="input" accept=".csv" />
+    <br /><br />
+    <button onclick="enviarArquivo()">Importar</button>
+    <script>
+      function enviarArquivo() {
+        const fileInput = document.getElementById("input");
+        const file = fileInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const conteudo = e.target.result;
+          google.script.run.withSuccessHandler(() => {
+            google.script.host.close();
+          }).importarCSVDoUsuario(conteudo);
+        };
+        reader.readAsText(file, 'ISO-8859-1');
+      }
+    </script>
+  </body>
+</html>
