@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<body>
+  <p>
+    Data inicial:<input type="date" id="dataInicio"></br>
+    Data Final:<input type="date" id="dataFim">
+  </p>
+  <button type="button" onclick="enviarDados(); this.disabled = true;">Gerar relatório</button>
+  <script>
+    function enviarDados(){
+      var dataInicio = document.getElementById('dataInicio').value;
+      var dataFim = document.getElementById('dataFim').value;
+      google.script.run.procurarDados(dataInicio, dataFim);
+    }
+  </script>
+</body>
+</html>
