@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--Este HTML é para o pop-up "conclusão de assinatura"-->
+<html>
+
+<head>
+  <base target="_top">
+
+<body>
+  <p>
+    <select name="tipo" id="tipo">
+    <option value="">Tipo de documento</option>
+    <option value="TC">TCE</option>
+    <option value="TR">TRE</option>
+  </select>
+  </p>
+  <p>
+  <input type="text" id="codigo" placeholder="Digite o código">
+  </p>
+  <p>
+<select name="disciplina" id="disciplina">
+    <option value="">Disciplina do documento</option>
+    <option value="22">AEP - TRAINEE PROGRAM</option>
+    <option value="1">ESTÁGIO BÁSICO - PRÁTICAS EM PSICOLOGIA ORGANIZACIONAL</option>
+    <option value="19">ESTÁGIO BÁSICO - PRÁTICAS EM PSICOLOGIA ORGANIZACIONAL</option>
+    <option value="2">ESTÁGIO BÁSICO - PRÁTICAS EM SAÚDE COLETIVA</option>
+    <option value="3">ESTÁGIO BÁSICO - PRÁTICAS PSICOEDUCACIONAIS</option>
+    <option value="4">ESTÁGIO BÁSICO - PSICODIAGNÓSTICO</option>
+    <option value="5">ESTÁGIO DE OPÇÃO CLÍNICA I</option>
+    <option value="6">ESTÁGIO DE OPÇÃO CLÍNICA II</option>
+    <option value="7">ESTÁGIO I DE OPÇÃO NA ÊNFASE</option>
+    <option value="8">ESTÁGIO II DE OPÇÃO NA ÊNFASE</option>
+    <option value="14">ESTÁGIO SUPERVISIONADO I</option>
+    <option value="15">ESTÁGIO SUPERVISIONADO II</option>
+    <option value="9">ESTÁGIO SUPERVISIONADO - ENGENHARIA</option>
+    <option value="11">ESTÁGIO SUPERVISIONADO EM ENGENHARIA CIVIL</option>
+    <option value="21">ESTÁGIO SUPERVISIONADO EM LÍNGUA INGLESA NO ENSINO FUNDAMENTAL</option>
+    <option value="16">ESTÁGIO SUPERVISIONADO EM LÍNGUA INGLESA NO ENSINO MÉDIO</option>
+    <option value="20">ESTÁGIO SUPERVISIONADO EM LÍNGUA PORTUGUESA NO ENSINO FUNDAMENTAL</option>
+    <option value="13">ESTÁGIO SUPERVISIONADO EM LÍNGUA PORTUGUESA NO ENSINO MÉDIO</option>
+    <option value="23">LAW TRAINEE</option>
+    <option value="18">PRÁTICA PROFISSIONAL E ESTÁGIO SUPERVISIONADO</option>
+</select>
+
+  </p>
+    <input type="date" id="data">
+    <button id="botaoEnviar" onclick="enviarDados()">Enviar</button>
+    <script>
+      function enviarDados() {
+      // Desativa o botão  
+        var botao = document.getElementById('botaoEnviar');  
+        botao.disabled = true; 
+
+        var codigo = document.getElementById('tipo').value + document.getElementById('codigo').value + document.getElementById('disciplina').value;
+        var data = document.getElementById('data').value;
+        //google.script.run.processarDados(codigo, data);
+
+      google.script.run
+        .withSuccessHandler(function() {
+          botao.disabled = false;  // Reativa o botão se tudo der certo
+        })
+        .processarDados(codigo, data);
+
+      }
+    </script>
+</body>
+
+</html>
